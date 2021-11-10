@@ -123,7 +123,6 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "Set_the_cells_Window";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Set_the_cells_Window_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

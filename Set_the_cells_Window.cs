@@ -11,12 +11,14 @@ namespace Crossword_puzzle
         public Set_the_cells_Window()
         {
             InitializeComponent();
-            GirdPaint();
+            GirdControl();
         }
 
 
-        async private void GirdPaint()
+        async private void GirdControl()
         {
+            #region  Создает и отрисовывает поле кросворда
+
             Panel panelGird = new Panel();
             panelGird.AutoSize = true;
             panelGird.Padding = new System.Windows.Forms.Padding(0, 0, 85, 85);
@@ -34,14 +36,37 @@ namespace Crossword_puzzle
                         };
 
                         panelGird.Controls.Add(newPanel);
+                        
+                        Crossword._Game_field[n, m] = newPanel;
                         newPanel.BackColor = Color.Black;
                         newPanel.BorderStyle = BorderStyle.Fixed3D;
                     }
                 }
             });
             this.Controls.Add(panelGird);
+
+            #endregion
+
+            ClickControl(panelGird);  // контролирует клики по полю кросворда
+
+
         }
 
+
+        public void ClickControl(Panel Gird)
+        {
+            Gird.MouseClick += (object sender, MouseEventArgs e) =>
+            {
+                Point click = new Point(e.X, e.Y);
+                Point Panel = new Point
+                (
+                    click.X / 40,
+                    click.Y / 40
+                );
+
+
+            };
+        }
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             //this.Size = new Size(150 + Crossword.Field_size[0] * 50, 150 + Crossword.Field_size[1] * 50);
@@ -53,10 +78,11 @@ namespace Crossword_puzzle
 
         }
 
-        private void Set_the_cells_Window_Load(object sender, EventArgs e)
+        private void PanelGird_Click(object sender, EventArgs e)
         {
 
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

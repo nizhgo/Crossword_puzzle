@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tile.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Crossword.cs" />
     <Compile Include="Set_the_cells_Window.cs">
       <SubType>Form</SubType>
