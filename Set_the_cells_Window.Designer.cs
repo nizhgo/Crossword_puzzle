@@ -32,9 +32,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -71,28 +71,6 @@
             this.panel2.Size = new System.Drawing.Size(401, 59);
             this.panel2.TabIndex = 4;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Rocketfont", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(20, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(195, 18);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Выберите клетки, где";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Rocketfont", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(20, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(237, 18);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "должны находиться слова";
-            // 
             // button1
             // 
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
@@ -107,7 +85,29 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Готово";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Rocketfont", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(20, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(237, 18);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "должны находиться слова";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Rocketfont", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(20, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(195, 18);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Выберите клетки, где";
             // 
             // Set_the_cells_Window
             // 

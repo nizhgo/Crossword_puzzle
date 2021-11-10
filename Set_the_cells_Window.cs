@@ -17,11 +17,12 @@ namespace Crossword_puzzle
 
         async private void GirdControl()
         {
-            #region  Создает и отрисовывает поле кросворда
+            //region  Создает и отрисовывает поле кросворда, контролирует нажатия на ячейки
 
-            Panel panelGird = new Panel();
+            Tile panelGird = new Tile();
             panelGird.AutoSize = true;
-            panelGird.Padding = new System.Windows.Forms.Padding(0, 0, 85, 85);
+            panelGird.Size = new Size(Crossword.Field_size[0], Crossword.Field_size[1]);
+            panelGird.Padding = new Padding(0, 0, 85, 85);
             panelGird.Location = new Point(85, 197);
             await Task.Run(() =>
             {
@@ -29,67 +30,32 @@ namespace Crossword_puzzle
                 {
                     for (var m = 0; m < Crossword.Field_size[1]; m++)
                     {
-                        Panel newPanel = new Panel
+                        Tile newTile = new Tile
                         {
-                            Size = new Size(40, 40),
-                            Location = new Point(40 * n, 40 * m)
+                            Size = new Size(30, 30),
+                            Location = new Point(30 * n, 30 * m),
+                            Position = new Point(n, m)
                         };
-
-                        panelGird.Controls.Add(newPanel);
-                        
-                        Crossword._Game_field[n, m] = newPanel;
-                        newPanel.BackColor = Color.Black;
-                        newPanel.BorderStyle = BorderStyle.Fixed3D;
+                        Crossword._Game_field[n, m] = newTile;
+                        newTile.MouseClick += ClickControl;
+                        panelGird.Controls.Add(Crossword._Game_field[n, m]);
+                        newTile.BorderStyle = BorderStyle.Fixed3D;
                     }
                 }
             });
-            this.Controls.Add(panelGird);
-
-            #endregion
-
-            ClickControl(panelGird);  // контролирует клики по полю кросворда
-
-
+            Controls.Add(panelGird);
+            // контролирует клики по полю кросворда
+            //#endregion
         }
 
 
-        public void ClickControl(Panel Gird)
+        public void ClickControl(object sender, MouseEventArgs e)
         {
-            Gird.MouseClick += (object sender, MouseEventArgs e) =>
-            {
-                Point click = new Point(e.X, e.Y);
-                Point Panel = new Point
-                (
-                    click.X / 40,
-                    click.Y / 40
-                );
-
-
-            };
+            Tile tile = (Tile)sender;
+            tile.Click();
         }
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-            //this.Size = new Size(150 + Crossword.Field_size[0] * 50, 150 + Crossword.Field_size[1] * 50);
-            //this.BackgroundImageLayout = ImageLayout.Stretch;
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PanelGird_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
         {
 
         }
