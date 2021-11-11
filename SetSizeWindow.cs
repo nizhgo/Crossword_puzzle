@@ -21,9 +21,9 @@ namespace Crossword_puzzle
                 if (h != 0 && w != 0)
                 {
                     Crossword.CreateGameField(h, w);                    //вызываем функцию статического класса, создающую игрвое поле
-                    Form Set_the_cells = new Set_the_cells_Window();    // вызываем и показываем форму следующего этапа
-                    Set_the_cells.Show();
-                    this.Hide();                                        // эту форму скрываем
+                    Form Set_the_cells = new Set_the_cells_Window();
+                    Set_the_cells.ShowDialog(); // вызываем и показываем форму следующего этапа
+                    this.Close();                                    // эту форму скрываем
                 }
                 else
                     MessageBox.Show("Размер не может быть нулевым!");

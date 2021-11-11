@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Crossword_puzzle
 {
-    internal class Tile : Panel
+    internal class Tile : Panel // мой сапописный класс, наследуемый от Panel
     {
         public Point Position { get; set; }  // расположение ячейки на всем кроссворде
         public bool usage = false; //активна ли ячейка (выбрана ли пользователем)
@@ -29,7 +29,7 @@ namespace Crossword_puzzle
 
         public new void Click()      //дейтсвия по клику на плитку
         {
-            if (usage == true)
+            if (usage == true) // если активна - деактивируем
             {
                 usage = false;
                 this.BackColor = Color.Black;
