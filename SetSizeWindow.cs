@@ -23,7 +23,7 @@ namespace Crossword_puzzle
                     Crossword.CreateGameField(h, w);                    //вызываем функцию статического класса, создающую игрвое поле
                     Form Set_the_cells = new Set_the_cells_Window();
                     Set_the_cells.ShowDialog(); // вызываем и показываем форму следующего этапа
-                    this.Close();                                    // эту форму скрываем
+                    this.Close();                                    // эту форму зарываем
                 }
                 else
                     MessageBox.Show("Размер не может быть нулевым!");
@@ -44,6 +44,11 @@ namespace Crossword_puzzle
                         e.Handled = true;                               // отменяем действие (ввод символа)
 
                 };
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

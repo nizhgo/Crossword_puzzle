@@ -8,13 +8,14 @@ using System.Drawing;
 
 namespace Crossword_puzzle
 {
-    internal class Tile : Panel // мой сапописный класс, наследуемый от Panel
+    public class Tile : Panel // мой сапописный класс, наследуемый от Panel
     {
         public Point Position { get; set; }  // расположение ячейки на всем кроссворде
-        public bool usage = false; //активна ли ячейка (выбрана ли пользователем)
-        public bool begining_status = false; //яляется ли ячейка начальной для слова
-        public int word_number = new int(); //номер слова 
-        public char letter = new char(); //буква на плитке
+        public bool Usage = false; //активна ли ячейка (выбрана ли пользователем)
+        public bool Begining_status = false; //яляется ли ячейка начальной для слова
+        public int Word_number = new int(); //номер слова 
+        //public char Letter = new char(); //буква на плитке
+        public Label Letter = new Label();
 
         public Tile(Size size, Point location, Point position)  // конструктор класса 
         {
@@ -29,15 +30,15 @@ namespace Crossword_puzzle
 
         public new void Click()      //дейтсвия по клику на плитку
         {
-            if (usage == true) // если активна - деактивируем
+            if (Usage == true) // если активна - деактивируем
             {
-                usage = false;
+                Usage = false;
                 this.BackColor = Color.Black;
             }
             else                 //если неактивна — активируем
             {
-                this.BackColor = Color.PowderBlue;
-                usage = true;
+                this.BackColor = Color.LightSlateGray;
+                Usage = true;
             }
         }
 

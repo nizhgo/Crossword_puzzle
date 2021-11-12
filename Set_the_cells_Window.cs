@@ -25,16 +25,23 @@ namespace Crossword_puzzle
             panelGird.Location = new Point(85, 197);        //начальная позиция на всей форме
             await Task.Run(() =>                                    // запускаем асинхронно, чтобы не сильно зависала форма
             {
-                for (var n = 0; n < Crossword.Field_size[0]; n++)
+                for (var n = 0; n < Crossword.H; n++)
                 {
-                    for (var m = 0; m < Crossword.Field_size[1]; m++)
+                    for (var m = 0; m < Crossword.W; m++)
                     {
                         Tile newTile = new Tile                 //создаем плитку кросворда
                         {
                             Size = new Size(30, 30),
                             Location = new Point(30 * n, 30 * m),
                             Position = new Point(n, m)          // позиция в кросворде
+
                         };
+                        /*Label textBox = new Label();
+                        textBox.Text = "T";
+                        textBox.ForeColor = Color.White;
+                        textBox.Location = new Point(4, 4);
+                        newTile.Controls.Add(textBox);
+                        */
                         Crossword._Game_field[n, m] = newTile;
                         newTile.MouseClick += ClickControl;                     //контролирует клики по ячейкам
                         panelGird.Controls.Add(Crossword._Game_field[n, m]);
@@ -55,7 +62,12 @@ namespace Crossword_puzzle
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Crossword.CreateWords();
         }
+
+        public void AnalyzeGird()
+        {
+        }
+
     }
 }

@@ -63,6 +63,7 @@
             this.label1.Size = new System.Drawing.Size(236, 35);
             this.label1.TabIndex = 0;
             this.label1.Text = "Крсовоpдус}";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 

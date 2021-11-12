@@ -11,17 +11,18 @@ namespace Crossword_puzzle
     static class Dictionary
     {
 
-        public static List<string> AllWord = File.ReadAllLines("@dictionary.txt").ToList();
+        public static List<string> AllWord = File.ReadAllLines(@"dictionary.txt", Encoding.GetEncoding(1251)).ToList();
 
 
-        public static string[] Variants(string mask, IEnumerable<string> availableWords)
+        public static string FindWord(string mask)
         {
             Regex regex = new Regex("^" + Regex.Replace(mask, "#*", m => $@"\p{{L}}{{{m.Length}}}") + "$");
 
-            return availableWords
-              .Where(word => regex.IsMatch(availableWords.ToString()))
-              .OrderBy(word => word)
-              .ToArray();
+            
+            string[] a = AllWord.Where(x => regex.IsMatch(x)).ToArray();
+            Random random = new Random();
+            int i = random.Next(a.Length);
+            return a[i];
         }
     }
 }

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Word.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Tile.cs">
       <SubType>Component</SubType>
