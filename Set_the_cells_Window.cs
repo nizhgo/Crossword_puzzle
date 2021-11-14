@@ -10,6 +10,7 @@ namespace Crossword_puzzle
     {
         public Set_the_cells_Window()
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             GirdCreator();
         }
@@ -62,6 +63,15 @@ namespace Crossword_puzzle
 
         private void button1_Click(object sender, EventArgs e)
         {
+            new Thread(() =>
+            {
+                Invoke((MethodInvoker)(() =>
+                {
+                }));
+            })
+            {
+                Priority = ThreadPriority.Highest
+            }.Start();
             Crossword.CreateWords();
         }
 
@@ -69,5 +79,8 @@ namespace Crossword_puzzle
         {
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

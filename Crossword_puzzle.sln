@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crossword_puzzle", "Crosswo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DE0B6744-898F-4CD4-AB15-54217C890FB8}"
 	ProjectSection(SolutionItems) = preProject
+		dictionary.txt = dictionary.txt
 		C:\Users\89008\Downloads\Rocket-d2fe27cf82c0c5db80a8b475b72872aa.ttf = C:\Users\89008\Downloads\Rocket-d2fe27cf82c0c5db80a8b475b72872aa.ttf
 	EndProjectSection
 EndProject

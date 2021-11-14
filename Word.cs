@@ -9,8 +9,7 @@ namespace Crossword_puzzle
         public List<Tile> WordTiles = new List<Tile>();
         public Word(Tile FirstTile)
         {
-            FirstTile.Begining_status = true;
-            FirstTile.Word_number =  Crossword.SelectedWord.Count + 1;
+            FirstTile.Word_number = Crossword.SelectedWord.Count + 1;
             GetFullWord(ref FirstTile);
         }
 
@@ -42,56 +41,76 @@ namespace Crossword_puzzle
             WordTiles.Add(tile);
             if (x + 1 != Crossword.H && Crossword._Game_field[x + 1, y].Usage == true)
             {
-                Crossword._Game_field[x + 1, y].Letter.Text = "#";
-                WordTiles.Add(Crossword._Game_field[x + 1, y]);
-                //Crossword._Game_field[x + 1, y].Letter.Text = "#";
-                tile.Letter.Text = "#";
-                int i = 2;
-                while (true)
-                {   
-                    if (x + i < Crossword.H)
-                    {
-                        var a = Crossword._Game_field[x + i, y];
-                        if (a.Usage == true)
-                        {
-                            a.Letter.Text = "#";
-                            WordTiles.Add(a);  
-                        }
-                        else break;
-                        i++;
-                    }
-                    else break;
-                }
-            }
-
-            else if (y + 1 != Crossword.H && Crossword._Game_field[x, y + 1].Usage == true)
-            {
-                Crossword._Game_field[x, y + 1].Letter.Text = "#";
-                WordTiles.Add(Crossword._Game_field[x, y + 1]);
-                //Crossword._Game_field[x, y + 1].Letter.Text = "#";
-                int i = 2;
-                while (true)
+                if (x - 1 >= 0)
                 {
-                    if ((y + i != Crossword.W))
+                    var PreTileX = Crossword._Game_field[x - 1, y];
+                    if (PreTileX.Usage == true)
                     {
-                        var a = Crossword._Game_field[x, y + i];
-                        if (a.Usage == true)
+                        PreTileX.Begining_status = true;
+                        WordTiles.Insert(0, PreTileX);
+
+                    }
+                    Crossword._Game_field[x + 1, y].Letter.Text = "#";
+                    WordTiles.Add(Crossword._Game_field[x + 1, y]);
+                    //Crossword._Game_field[x + 1, y].Letter.Text = "#";
+                    tile.Letter.Text = "#";
+                    int i = 2;
+                    while (true)
+                    {
+                        if (x + i < Crossword.H)
                         {
-                            a.Letter.Text = "#";
-                            WordTiles.Add(a);
+                            var a = Crossword._Game_field[x + i, y];
+                            if (a.Usage == true)
+                            {
+                                a.Letter.Text = "#";
+                                WordTiles.Add(a);
+                            }
+                            else break;
+                            i++;
                         }
                         else break;
-                        i++;
                     }
-                    else break;
+                }
 
+                else if (y + 1 != Crossword.H && Crossword._Game_field[x, y + 1].Usage == true)
+                {
+                    if (y - 1 >= 0)
+                    {
+                        var PreTileY = Crossword._Game_field[x, y - 1];
+                        if (PreTileY.Usage == true)
+                        {
+                            PreTileY.Begining_status = true;
+                            WordTiles.Insert(0, PreTileY);
+                        }
+                    }
+
+                    WordTiles.Add(Crossword._Game_field[x, y + 1]);
+
+                    //Crossword._Game_field[x, y + 1].Letter.Text = "#";
+                    int i = 2;
+                    while (true)
+                    {
+                        if ((y + i != Crossword.W))
+                        {
+                            var a = Crossword._Game_field[x, y + i];
+                            if (a.Usage == true)
+                            {
+                                a.Letter.Text = "#";
+                                WordTiles.Add(a);
+                            }
+                            else break;
+                            i++;
+                        }
+                        else break;
+
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("Ошибка!", "неправильный шаблон кросворда");
                 }
             }
-
-            else
-            {
-                MessageBox.Show("Ошибка!", "неправильный шаблон кросворда");
-            }               
         }
     }
 }

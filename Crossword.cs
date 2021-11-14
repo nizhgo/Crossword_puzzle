@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Crossword_puzzle
 {
@@ -24,6 +26,8 @@ namespace Crossword_puzzle
 
         public static void CreateWords()
         {
+
+
             foreach (Tile tile in _Game_field)
             {
                 if (tile.Usage == true && tile.Letter.Text != "#")
@@ -31,39 +35,51 @@ namespace Crossword_puzzle
                     SelectedWord.Add(new Word(tile));
                 }
             }
-
-            //SelectedWord.Sort();
-
             foreach (Word word in SelectedWord)
             {
                 string a = word.ToString();
-                char[] new_word = Dictionary.FindWord(a).ToCharArray();
-                for (int i = 0; i < new_word.Length; i++)
+
+                if (Dictionary.FindWord(a) == null)
                 {
-                    word.WordTiles[i].Letter.Text = new_word[i].ToString();
-                    Label word_label = new Label();
-                    word_label.Location = new Point(5, 5);
-                    word_label.Text = new_word[i].ToString();
-                    word_label.Font = new Font("Rocketfont", 10);
-                    word_label.BackColor = Color.Transparent;
-                    word_label.ForeColor = Color.White;
-                    word_label.BringToFront();
-                    word.WordTiles[i].Controls.Add(word_label);
-                    word_label.Show();
+
+                    foreach (Tile tile in Crossword._Game_field)
+                    {
+
+                        tile.Letter.Text = "";
+
+                    }
+                    Crossword.SelectedWord.Clear();
+                    Crossword.CreateWords();
+                    return;
                 }
-                System.Console.WriteLine(word.ToString());
+                
+                    string new_word = Dictionary.FindWord(a);
+                    for (int i = 0; i < new_word.Length; i++)
+                    {
+                        word.WordTiles[i].Letter.Text = new_word[i].ToString();
 
-                Label numb = new Label();
-                numb.BackColor = Color.Transparent;
-                numb.Font = new Font("Rockwell", 6);
-                numb.ForeColor = Color.White;
+                        Label word_label = new Label();
+                        word_label.Location = new Point(5, 5);
+                        word_label.Text = new_word[i].ToString();
+                        word_label.Font = new Font("Rocketfont", 10);
+                        word_label.BackColor = Color.Transparent;
+                        word_label.ForeColor = Color.White;
+                        word_label.BringToFront();
+                        word.WordTiles[i].Controls.Add(word_label);
+                        word_label.Show();
+                    }
+                    System.Console.WriteLine(word.ToString());
+                    Label numb = new Label();
+                    numb.BackColor = Color.Transparent;
+                    numb.Font = new Font("Rockwell", 6);
+                    numb.ForeColor = Color.White;
 #pragma warning disable CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения
-                numb.Text = word.WordTiles[0].Word_number.ToString();
+                    numb.Text = word.WordTiles[0].Word_number.ToString();
 #pragma warning restore CS1690 // Доступ к члену в поле класса маршалинга по ссылке может вызвать исключение времени выполнения
-                word.WordTiles[0].Controls.Add(numb);
-
+                    word.WordTiles[0].Controls.Add(numb);
+                
             }
         }
-
     }
+
 }

@@ -22,7 +22,15 @@ namespace Crossword_puzzle
             string[] a = AllWord.Where(x => regex.IsMatch(x)).ToArray();
             Random random = new Random();
             int i = random.Next(a.Length);
-            return a[i];
+
+            try
+            {
+                return a[i];
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
